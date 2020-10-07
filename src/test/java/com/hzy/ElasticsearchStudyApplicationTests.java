@@ -5,7 +5,6 @@ import com.hzy.pojo.User;
 import com.sun.corba.se.impl.interceptors.SlotTable;
 import javafx.scene.control.IndexRange;
 import net.minidev.json.JSONUtil;
-import org.apache.lucene.util.QueryBuilder;
 import org.elasticsearch.action.admin.indices.delete.DeleteIndexRequest;
 import org.elasticsearch.action.bulk.BulkRequest;
 import org.elasticsearch.action.bulk.BulkResponse;
@@ -29,6 +28,8 @@ import org.elasticsearch.common.unit.TimeValue;
 import org.elasticsearch.common.xcontent.XContentBuilder;
 import org.elasticsearch.common.xcontent.XContentType;
 import org.elasticsearch.common.xcontent.json.JsonXContent;
+import org.elasticsearch.index.query.MatchQueryBuilder;
+import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.index.query.TermQueryBuilder;
 import org.elasticsearch.search.SearchHit;
@@ -209,7 +210,8 @@ class ElasticsearchStudyApplicationTests {
         // 构建搜索条件
         SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
         // 精确查询
-        TermQueryBuilder termQueryBuilder = QueryBuilders.termQuery("name", "欢迎");
+//        TermQueryBuilder termQueryBuilder = QueryBuilders.termQuery("name", "欢迎来");
+        MatchQueryBuilder termQueryBuilder = QueryBuilders.matchQuery("name", "欢迎来");
 
         searchSourceBuilder.query(termQueryBuilder);
         searchSourceBuilder.timeout(new TimeValue(60, TimeUnit.SECONDS));
