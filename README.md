@@ -1,0 +1,5 @@
+# elasticsearch-study
+
+想要在newsblog网站上添加一个站内搜索的功能，于时学习了ElasticSearch的基础命令和JavaAPI
+
+在ElasticsearchStudyApplicationTests类下进行了相关测试，在此进行记录一下
